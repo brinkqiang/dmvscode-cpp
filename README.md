@@ -38,4 +38,4 @@ int main() {
 
 ![Mobile Preview](/images/debug.png)
 
-[CLI环境配置指南](cline.md)
+[cline环境配置指南](cline.md)
