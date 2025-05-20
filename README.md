@@ -38,4 +38,27 @@ int main() {
 
 ![Mobile Preview](/images/debug.png)
 
+# cline 设置
 
+## 安装 PowerShell7
+```
+winget install --id Microsoft.PowerShell
+```
+
+管理员权限 运行powershell 
+Get-ExecutionPolicy
+如果输出已经是 RemoteSigned 、 Unrestricted 或 Bypass ，则可能无需更改执行策略。这些策略应该允许 Shell 集成正常工作。
+如果输出是 Restricted 或 AllSigned ，则可能需要更改策略以启用 shell 集成。
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+## 查找配置文件
+New-Item -Path $PROFILE -ItemType File -Force
+
+notepad C:\Users\$env:USERNAME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+
+if ($env:TERM_PROGRAM -eq "vscode") { 
+    . "$(code --locate-shell-integration-path pwsh)" 
+}
+
+## vscode中设置 PowerShell为默认终端
